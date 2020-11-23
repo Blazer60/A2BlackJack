@@ -3,4 +3,4 @@ project(A2BlackJack)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(A2BlackJack main.cpp)
+add_executable(A2BlackJack main.cpp deck.cpp deck.h)
