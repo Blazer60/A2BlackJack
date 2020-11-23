@@ -6,6 +6,10 @@
 //
 
 #include <iostream>
+#include <algorithm>
+/* Random function */
+#include <random>
+#include <chrono>
 /* Unicode manipulation for iostream */
 #include <io.h>
 #include <fcntl.h>
@@ -28,5 +32,7 @@ struct card {
 };
 
 void displayCard(card &card, bool displayIcon=false);
+void generateDeck(card deck[52]);
+void shuffleDeck(card deck[], unsigned seed);
 
 #endif //A2BLACKJACK_DECK_H

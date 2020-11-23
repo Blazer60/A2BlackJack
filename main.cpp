@@ -1,6 +1,12 @@
 #include <iostream>
 #include "deck.h"
 
+void blackJack() {
+    card deck[52];
+    generateDeck(deck);
+    std::cout << "this would go to an actual game but it isn't implemented yet" << std::endl;
+}
+
 int main() {
     /* Default Settings */
     bool debug = true;
@@ -14,7 +20,7 @@ int main() {
         std::cin >> playerChoice;
         switch (playerChoice) {
             case 'p':
-                std::cout << "this would go to an actual game but it isn't implemented yet" << std::endl;
+                blackJack();
                 break;
             case 's':
                 std::cout << "Settings" << std::endl;
