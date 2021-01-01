@@ -7,5 +7,9 @@
 #ifndef A2BLACKJACK_BLACKJACK_H
 #define A2BLACKJACK_BLACKJACK_H
 
+#include "../public/deck.h"
+#include <iostream>
+
+void blackjack();
 
 #endif //A2BLACKJACK_BLACKJACK_H

@@ -1,12 +1,6 @@
 #include <iostream>
-#include "../public/deck.h"
+#include "../public/blackjack.h"
 #include "../public/input.h"
-
-void blackJack() {
-    card deck[52];
-    generateDeck(deck);
-    std::cout << "this would go to an actual game but it isn't implemented yet" << std::endl;
-}
 
 int main() {
     /* Default Settings */
@@ -20,7 +14,7 @@ int main() {
         switch (playerChoice) {
             case 'p':
             case '1':
-                blackJack();
+                blackjack();
                 break;
             case 's':
             case '2':
