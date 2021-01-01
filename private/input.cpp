@@ -6,6 +6,7 @@
 
 #include "../public/input.h"
 #include <iostream>
+#include <string>
 
 bool isNull(char *input) {
     if (std::strlen(input) == 0) {
@@ -41,7 +42,20 @@ bool inRange(int num, int min, int max) {
     return false;
 }
 
-bool enumCheck(char *input, enum options) {
+bool contains(char *input, char *options) {
+    for (int i = 0; options[i] != '\0'; i++) {
+        if (options[i] == input[0]) {
+            return true;
+        }
+    }
+    std::cout << std::endl << "Please enter ";
+    for (int i = 0; options[i] != '\0'; i++) {
+        std::cout << options[i];
+        if (options[i + 1] != '\0') {
+            std::cout << ", ";
+        }
+    }
+    std::cout << " to continue: ";
     return false;
 }
 
@@ -62,11 +76,20 @@ int charToInt(char *input) {
     return 0;
 }
 
+void toLower(char *input) {
+    for (int i = 0; input[i] != '\0'; i++) {
+        if (input[i] > 'A' && input[i] < 'Z') {
+            input[i] = input[i] - 'Z' - 'z';
+        }
+    }
+}
+
 int integerInput(char *message, int min, int max) {
     char input[60];
     std::cout << message;
     for (;;) {
         std::cin >> input;
+
         /* Null Check */
         if (isNull(input)) {
             continue;
@@ -85,6 +108,21 @@ int integerInput(char *message, int min, int max) {
     }
 }
 
-char characterInput(char *message, enum options) {
-    return 0;
+char characterInput(char *message, char *options) {
+    char input[60];
+    std::cout << message;
+    for (;;) {
+        std::cin >> message;
+
+        /* Null Check */
+        if (isNull(input)) {
+            continue;
+        }
+
+        toLower(input);
+        /* Enum Check */
+        if (contains(input, options)) {
+            return input[0];
+        }
+    }
 }

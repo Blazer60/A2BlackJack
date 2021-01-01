@@ -10,9 +10,10 @@
 bool isNull(char input[]);
 bool isInteger(char input[]);
 bool inRange(int num, int min, int max);
-bool enumCheck(char input[], enum options);
+bool contains(char *input, char *options);
 int charToInt(char input[]);
+void toLower(char input[]);
 int integerInput(char message[], int min, int max);
-char characterInput(char message[], enum options);
+char characterInput(char message[], char options[]);
 
 #endif //A2BLACKJACK_INPUT_H
