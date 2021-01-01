@@ -63,7 +63,7 @@ int charToInt(char *input) {
     /* Convert the Ascii to an integer */
     int base = 1;
     int intInput = 0;
-    for (int i = std::strlen(input); i > 0; i--) {
+    for (int i = std::strlen(input) - 1; i >= 0; i--) {
         if (input[i] == '-') {
             /* Handle negative */
             intInput = -intInput;
@@ -73,7 +73,7 @@ int charToInt(char *input) {
             base *= 10;
         }
     }
-    return 0;
+    return intInput;
 }
 
 void toLower(char *input) {
@@ -112,7 +112,7 @@ char characterInput(char *message, char *options) {
     char input[60];
     std::cout << message;
     for (;;) {
-        std::cin >> message;
+        std::cin >> input;
 
         /* Null Check */
         if (isNull(input)) {
