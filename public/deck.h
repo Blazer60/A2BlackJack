@@ -5,6 +5,11 @@
 // Date: 23/11/2020
 //
 
+
+
+#ifndef A2BLACKJACK_DECK_H
+#define A2BLACKJACK_DECK_H
+
 #include <iostream>
 #include <algorithm>
 /* Random function */
@@ -14,9 +19,6 @@
 #include <io.h>
 #include <fcntl.h>
 
-
-#ifndef A2BLACKJACK_DECK_H
-#define A2BLACKJACK_DECK_H
 
 /* Unicode character for each suit */
 #define SPADES L"\u2660"
@@ -31,8 +33,17 @@ struct card {
     std::wstring icon;
 };
 
+struct deck {
+    card deck[52];
+    int cardPtr{ 0 };
+    bool displayIcons{ false };
+    int shufflePtr{ 44 };
+    bool shuffle{ false };
+};
+
 void displayCard(card &card, bool displayIcon=false);
-void generateDeck(card deck[52]);
-void shuffleDeck(card deck[], unsigned seed);
+void generateDeck(deck cards);
+void shuffleDeck(deck cards, unsigned seed);
+card* drawCard(deck cards);
 
 #endif //A2BLACKJACK_DECK_H

@@ -23,7 +23,7 @@ void displayCard(card &card, bool displayIcon) {
 /*
  * Generates a shuffled deck of cards
  */
-void generateDeck(card *deck) {
+void generateDeck(deck cards) {
     char suits[4][9] = {"Diamonds", "Hearts", "Spades", "Clubs"};
     char names[13][6] = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
     std::wstring suitIcon[4] = {DIAMONDS, HEARTS, SPADES, CLUBS};
@@ -31,17 +31,24 @@ void generateDeck(card *deck) {
     for (int i = 0; i < 52; i++) {
         int suitPtr = i % 4;
         int namePtr = i % 13;
-        strcpy_s(deck[i].suit, 9, suits[suitPtr]);
-        strcpy_s(deck[i].name, 6, names[namePtr]);
-        deck[i].value = namePtr == 0? 11 :  std::min(namePtr, 10);
-        deck[i].icon = suitIcon[suitPtr];
+        strcpy_s(cards.deck[i].suit, 9, suits[suitPtr]);
+        strcpy_s(cards.deck[i].name, 6, names[namePtr]);
+        cards.deck[i].value = namePtr == 0? 11 :  std::min(namePtr, 10);
+        cards.deck[i].icon = suitIcon[suitPtr];
     }
 
-    shuffleDeck(deck, std::chrono::steady_clock::now().time_since_epoch().count());
+    shuffleDeck(cards, std::chrono::steady_clock::now().time_since_epoch().count());
 }
 
-void shuffleDeck(card *deck, unsigned int seed) {
+void shuffleDeck(deck cards, unsigned int seed) {
     for (int i = 0; i < 52; i++) {
-        std::swap(deck[i], deck[seed * i % 52]);
+        std::swap(cards.deck[i], cards.deck[seed * i % 52]);
     }
+}
+
+card *drawCard(deck cards) {
+    card *newCard = &cards.deck[cards.cardPtr];
+    cards.cardPtr = (cards.cardPtr + 1) % 52;
+    cards.shuffle = cards.cardPtr > cards.shufflePtr && !cards.shuffle;
+    return newCard;
 }
