@@ -20,7 +20,7 @@ bool isNull(char *input) {
     return false;
 }
 
-bool isInteger(char *input) {
+bool isInteger(char input[], bool displayError) {
     /*
      * For each character in the input, make sure that it is within 0-9
      * also checks for negatives
@@ -31,7 +31,9 @@ bool isInteger(char *input) {
             continue;
         }
         else if (input[i] < '0' || input[i] > '9') {
-            std::cout << std::endl << "please enter a number: ";
+            if (displayError) {
+                std::cout << std::endl << "please enter a number: ";
+            }
             return false;
         }
     }
@@ -55,11 +57,15 @@ bool contains(char *input, char *options) {
      * Determines if an input character
      * is within a string
      */
+
+    /* See if the option is in the list */
     for (int i = 0; options[i] != '\0'; i++) {
         if (options[i] == input[0]) {
             return true;
         }
     }
+
+    /* Error message to the user */
     std::cout << std::endl << "Please enter ";
     for (int i = 0; options[i] != '\0'; i++) {
         std::cout << options[i];
@@ -118,7 +124,7 @@ int integerInput(char *message, int min, int max) {
         }
 
         /* Type Check */
-        if (!isInteger(input)) {
+        if (!isInteger(input, true)) {
             continue;
         }
 
@@ -130,7 +136,7 @@ int integerInput(char *message, int min, int max) {
     }
 }
 
-char characterInput(char *message, char *options) {
+char characterInput(char *message, char *options, bool allowNumbers) {
     char input[60];
     std::cout << message;
     for (;;) {
@@ -139,6 +145,13 @@ char characterInput(char *message, char *options) {
         /* Null Check */
         if (isNull(input)) {
             continue;
+        }
+
+        /* Hidden Number check */
+        if (allowNumbers) {
+            if(isInteger(input, false)) {
+                return input[0];
+            }
         }
 
         toLower(input);
