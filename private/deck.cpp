@@ -33,7 +33,7 @@ void generateDeck(card *deck) {
         int namePtr = i % 13;
         strcpy_s(deck[i].suit, 9, suits[suitPtr]);
         strcpy_s(deck[i].name, 6, names[namePtr]);
-        deck[i].value = std::min(namePtr, 10);
+        deck[i].value = namePtr == 0? 11 :  std::min(namePtr, 10);
         deck[i].icon = suitIcon[suitPtr];
     }
 
