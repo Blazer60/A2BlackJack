@@ -9,6 +9,10 @@
 #include <string>
 
 bool isNull(char *input) {
+    /*
+     * Check if a string is empty
+     * return true if it is
+     */
     if (std::strlen(input) == 0) {
         std::cout << std::endl << "Please enter something: ";
         return true;
@@ -35,6 +39,10 @@ bool isInteger(char *input) {
 }
 
 bool inRange(int num, int min, int max) {
+    /*
+     * Test the number against the specified range
+     * min and max are included
+     */
     if (min <= num && num <= max) {
         return true;
     }
@@ -43,6 +51,10 @@ bool inRange(int num, int min, int max) {
 }
 
 bool contains(char *input, char *options) {
+    /*
+     * Determines if an input character
+     * is within a string
+     */
     for (int i = 0; options[i] != '\0'; i++) {
         if (options[i] == input[0]) {
             return true;
@@ -60,7 +72,9 @@ bool contains(char *input, char *options) {
 }
 
 int charToInt(char *input) {
-    /* Convert the Ascii to an integer */
+    /*
+     * Convert the Ascii to an integer
+     */
     int base = 1;
     int intInput = 0;
     for (int i = std::strlen(input) - 1; i >= 0; i--) {
@@ -77,6 +91,10 @@ int charToInt(char *input) {
 }
 
 void toLower(char *input) {
+    /*
+     * Converts all alphabetical
+     * character to lower case
+     */
     for (int i = 0; input[i] != '\0'; i++) {
         if (input[i] > 'A' && input[i] < 'Z') {
             input[i] = input[i] - 'Z' - 'z';
@@ -85,6 +103,10 @@ void toLower(char *input) {
 }
 
 int integerInput(char *message, int min, int max) {
+    /*
+     * Returns an integer that can
+     * be used as an input
+     */
     char input[60];
     std::cout << message;
     for (;;) {
