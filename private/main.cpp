@@ -1,5 +1,5 @@
 #include <iostream>
-#include "deck.h"
+#include "../public/deck.h"
 
 void blackJack() {
     card deck[52];

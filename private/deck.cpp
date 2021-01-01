@@ -4,7 +4,7 @@
 // Date: 23/11/2020
 //
 
-#include "deck.h"
+#include "../public/deck.h"
 
 void displayCard(card &card, bool displayIcon) {
     if (displayIcon) {
