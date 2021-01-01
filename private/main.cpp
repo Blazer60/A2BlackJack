@@ -18,6 +18,7 @@ int main() {
         char playerChoice;
         std::cout << "(p)lay, (s)ettings, (t)utorial, (q)uit" << std::endl;
         std::cin >> playerChoice;
+        std::cout << playerChoice;
         switch (playerChoice) {
             case 'p':
                 blackJack();
