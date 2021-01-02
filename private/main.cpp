@@ -1,6 +1,7 @@
 #include <iostream>
 #include "../public/blackjack.h"
 #include "../public/input.h"
+#include "../public/settings.h"
 
 void menuInfo() {
     system("CLS");
@@ -33,7 +34,7 @@ int main() {
                 break;
             case 's':
             case '2':
-                std::cout << "Settings" << std::endl;
+                settingsMenu(debug, showIcons);
                 break;
             case 't':
             case '3':
