@@ -9,8 +9,13 @@
 
 #include "components/deck.h"
 #include "components/hand.h"
+#include "input.h"
 #include <iostream>
 
+bool playAgain();
+int enterCredits(int &credits);
+bool dealCard();
+void playRound(deck &cards, int &credits);
 void blackjack();
 
 #endif //A2BLACKJACK_BLACKJACK_H

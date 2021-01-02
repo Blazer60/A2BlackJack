@@ -29,6 +29,9 @@ void shuffleDeck(deck &cards, unsigned int seed) {
     for (int i = 0; i < 52; i++) {
         std::swap(cards.deck[i], cards.deck[seed * i % 52]);
     }
+    /* Reset deck stats */
+    cards.shuffle = false;
+    cards.cardPtr = 0;
 }
 
 playingCard drawCard(deck &cards) {
