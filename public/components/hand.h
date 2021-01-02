@@ -19,7 +19,7 @@ struct hand {
     handType type = Hard;
 };
 
-void calculateTotalScore(hand &playerHand, bool debug = false);
+void calculateTotalScore(hand &playerHand, bool countFirstCard = true);
 void increaseHandSize(hand &playerHand);
 void addCard(hand &playerHand, playingCard newCard);
 void displayHand(hand &playerHand, char playerName[], bool showIcon = false, bool hideFirstCard = false, bool debug = false);

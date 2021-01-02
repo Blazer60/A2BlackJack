@@ -6,7 +6,7 @@
 
 #include "../../public/components/hand.h"
 
-void calculateTotalScore(hand &playerHand, bool debug) {
+void calculateTotalScore(hand &playerHand, bool countFirstCard) {
     /*
      * Calculate the total score of a hand.
      * Additionally set's the type of hand to
@@ -19,7 +19,7 @@ void calculateTotalScore(hand &playerHand, bool debug) {
 
     for (int i = 0; i < playerHand.handSize; i++) {
         /* don't add the "hole" playingCard */
-        if (i != 0 || !debug) {
+        if (i != 0 || countFirstCard) {
             playingCard c = playerHand.cards[i];
             playerHand.score += c.value;
             /* Increase Ace count when one is found */
@@ -93,6 +93,6 @@ void displayHand(hand &playerHand, char playerName[], bool showIcon, bool hideFi
             std::cout << " ";
         }
     }
-    calculateTotalScore(playerHand, debug);
+    calculateTotalScore(playerHand, debug || !hideFirstCard);
     std::cout << "(" << playerHand.score << ")" << std::endl;
 }
