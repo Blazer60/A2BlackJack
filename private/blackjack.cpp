@@ -160,7 +160,7 @@ void blackjack() {
     /* Initial Setup */
     deck cards;
     generateDeck(cards);
-    int credits = 10000;
+    int credits = 100;
 
     bool option = true;
     while (option) {
