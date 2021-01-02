@@ -70,7 +70,6 @@ void displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet
 void playRound(deck &cards, int &credits) {
     /* Pre round setup */
 
-
     hand playerHand;
     hand dealerHand;
     int bet = 0;
@@ -98,6 +97,10 @@ void playRound(deck &cards, int &credits) {
             endTurn = playerHand.score > 21;
         }
     }
+
+    displayInfo(playerHand, dealerHand, cards, credits, bet, false, false);
+    std::cout << "The Dealer will now play" << std::endl;
+    system("pause");
 
     /* Dealers Turn */
     calculateTotalScore(dealerHand);
@@ -137,7 +140,6 @@ void playRound(deck &cards, int &credits) {
         else {
             std::cout << "You loose. Dealers has Blackjack" << std::endl;
         }
-
     }
     else {
        if (playerHand.score > dealerHand.score) {
