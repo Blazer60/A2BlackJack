@@ -4,9 +4,9 @@
 // Date: 01/01/2021
 //
 
-#include "../public/hand.h"
+#include "../../public/components/hand.h"
 
-void calculateTotalScore(hand playerHand, bool debug) {
+void calculateTotalScore(hand &playerHand, bool debug) {
     /*
      * Calculate the total score of a hand.
      * Additionally set's the type of hand to
@@ -18,9 +18,9 @@ void calculateTotalScore(hand playerHand, bool debug) {
     bool aceFound = false;
 
     for (int i = 0; i < playerHand.handSize; i++) {
-        /* don't add the "hole" card */
+        /* don't add the "hole" playingCard */
         if (i != 0 || !debug) {
-            card c = playerHand.cards[i];
+            playingCard c = playerHand.cards[i];
             playerHand.score += c.value;
             /* Increase Ace count when one is found */
             if (c.value == 11) {
@@ -50,7 +50,7 @@ void calculateTotalScore(hand playerHand, bool debug) {
     }
 }
 
-void increaseHandSize(hand playerHand) {
+void increaseHandSize(hand &playerHand) {
     /*
      * Increases the amount of cards in the players hand by 1.
      * It will also increase the array size on the heap if needed.
@@ -60,7 +60,7 @@ void increaseHandSize(hand playerHand) {
 
     if (playerHand.handSize > playerHand.arraySize) {
         /* Copy the contents of the old array to the new array */
-        card *newCardArray = new card[playerHand.arraySize * 2];
+        playingCard *newCardArray = new playingCard[playerHand.arraySize * 2];
         for (int i = 0; i < playerHand.handSize - 1; i++) {
             newCardArray[i] = playerHand.cards[i];
         }
@@ -68,4 +68,23 @@ void increaseHandSize(hand playerHand) {
         delete[] playerHand.cards;
         playerHand.cards = newCardArray;
     }
+}
+
+void addCard(hand &playerHand, playingCard newCard) {
+    playerHand.cards[playerHand.handSize] = newCard;
+    increaseHandSize(playerHand);
+}
+
+void displayHand(hand &playerHand, char playerName[], bool hideFirstCard) {
+    std::cout << playerName << ": ";
+    for (int i = 0; i < playerHand.handSize; i++) {
+        if (hideFirstCard) {
+            std::cout << "?? ";
+        }
+        else {
+            displayCard(playerHand.cards[i], true);
+            std::cout << " ";
+        }
+    }
+    std::cout << std::endl;
 }

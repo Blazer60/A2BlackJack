@@ -7,7 +7,14 @@
 #include "../public/blackjack.h"
 
 void blackjack() {
-    card deck[52];
-    generateDeck(deck);
+    deck cards;
+    hand player;
+    generateDeck(cards);
+
+    addCard(player, drawCard(cards));
+    addCard(player, drawCard(cards));
+
+    displayHand(player);
+
     std::cout << "this would go to an actual game but it isn't implemented yet" << std::endl;
 }
