@@ -40,6 +40,11 @@ bool dealCard() {
     }
 }
 
+void displayBetInfo(int &credits, int &bet) {
+    int offSet = 32 - ((int)log10((double)bet) + (int)log10((double)credits) + 2);
+    std::cout << "Current Bet: " << bet << "c" << std::setw(offSet) << "Pot: " << credits << "c" << std::endl;
+}
+
 void displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet, bool hideHoleCard, bool debug) {
     /* Banner */
     system("cls");
@@ -48,10 +53,9 @@ void displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet
         std::cout << "____|____|____|____|____|____|____|____|____|__" << std::endl;
     }
     /* Display Bet and Pot */
-    std::cout << "Current Bet: " << bet << "c" << ", Pot: " << credits << "c" << std::endl;
+    displayBetInfo(credits, bet);
 
     /* Display Deck and Discard pile */
-    // std::cout << std::setw(13) << "Deck: " << std::setw(34) << "Discard Pile: " << std::endl;
     displayDeckInfo(cards, player.handSize + dealer.handSize);
     /* Display both hands */
     displayHand(dealer, "Dealer", true, hideHoleCard, debug);
@@ -147,7 +151,7 @@ void blackjack() {
     /* Initial Setup */
     deck cards;
     generateDeck(cards);
-    int credits = 100;
+    int credits = 10000;
 
     bool option = true;
     while (option) {

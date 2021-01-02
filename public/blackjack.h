@@ -16,6 +16,7 @@
 bool playAgain();
 int enterCredits(int &credits);
 bool dealCard();
+void displayBetInfo(int &credits, int &bet);
 void displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet, bool hideHoleCard = true, bool debug = false);
 void playRound(deck &cards, int &credits);
 void blackjack();
