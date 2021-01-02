@@ -94,7 +94,13 @@ void playRound(deck &cards, int &credits) {
         if (!endTurn) {
             addCard(playerHand, drawCard(cards));
             calculateTotalScore(playerHand);
-            endTurn = playerHand.score > 21;
+            if (playerHand.score > 21) {
+                endTurn = true;
+                displayInfo(playerHand, dealerHand, cards, credits, bet, true, false);
+                std::cout << "Your hand has gone bust" << std::endl;
+                system("pause");
+            }
+
         }
     }
 
