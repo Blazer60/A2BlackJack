@@ -18,7 +18,7 @@ void generateDeck(deck &cards) {
         int namePtr = i % 13;
         strcpy_s(cards.deck[i].suit, 9, suits[suitPtr]);
         strcpy_s(cards.deck[i].name, 6, names[namePtr]);
-        cards.deck[i].value = namePtr == 0? 11 :  std::min(namePtr, 10);
+        cards.deck[i].value = namePtr == 0? 11 :  std::min(namePtr + 1, 10);
         cards.deck[i].icon = suitIcon[suitPtr];
     }
 
