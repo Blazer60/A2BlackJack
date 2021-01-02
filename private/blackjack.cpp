@@ -41,7 +41,8 @@ bool dealCard() {
 }
 
 void displayBetInfo(int &credits, int &bet) {
-    int offSet = 32 - ((int)log10((double)bet) + (int)log10((double)credits) + 2);
+    int offSet = bet > 0 ? 31 - (int)log10((double)bet): 31;
+    offSet -= (int)log10((double)credits) + 1;
     std::cout << "Current Bet: " << bet << "c" << std::setw(offSet) << "Pot: " << credits << "c" << std::endl;
 }
 
@@ -68,10 +69,14 @@ void displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet
 
 void playRound(deck &cards, int &credits) {
     /* Pre round setup */
-    int bet = enterCredits(credits);
-    credits -= bet;
+
+
     hand playerHand;
     hand dealerHand;
+    int bet = 0;
+    displayInfo(playerHand, dealerHand, cards, credits, bet, true, false);
+    bet = enterCredits(credits);
+    credits -= bet;
 
     addCard(playerHand, drawCard(cards));
     addCard(dealerHand, drawCard(cards));
