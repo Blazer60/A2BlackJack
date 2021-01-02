@@ -57,6 +57,7 @@ void displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet
 
     /* Display Deck and Discard pile */
     displayDeckInfo(cards, player.handSize + dealer.handSize);
+    std::cout << std::endl;
     /* Display both hands */
     displayHand(dealer, "Dealer", true, hideHoleCard, debug);
     displayHand(player, "Player", true, false, debug);
@@ -81,7 +82,7 @@ void playRound(deck &cards, int &credits) {
     /* Players Turn */
     while (!endTurn) {
         /* display info */
-        displayInfo(playerHand, dealerHand, cards, credits, bet, true, true);
+        displayInfo(playerHand, dealerHand, cards, credits, bet, true, false);
         /* Ask if they want to hit or stand */
         endTurn = !dealCard();
 
@@ -94,13 +95,14 @@ void playRound(deck &cards, int &credits) {
     }
 
     /* Dealers Turn */
+    calculateTotalScore(dealerHand);
     while (dealerHand.score < 17) {
         addCard(dealerHand, drawCard(cards));
         calculateTotalScore(dealerHand);
     }
 
     /* Determine winner */
-    displayInfo(playerHand, dealerHand, cards, credits, bet, true, true);
+    displayInfo(playerHand, dealerHand, cards, credits, bet, false, false);
 
     /* Check to see if deck has looped */
     if (cards.shuffle) {
