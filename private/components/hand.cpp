@@ -75,16 +75,24 @@ void addCard(hand &playerHand, playingCard newCard) {
     increaseHandSize(playerHand);
 }
 
-void displayHand(hand &playerHand, char playerName[], bool hideFirstCard) {
+void displayHand(hand &playerHand, char playerName[], bool showIcon, bool hideFirstCard, bool debug) {
     std::cout << playerName << ": ";
     for (int i = 0; i < playerHand.handSize; i++) {
-        if (hideFirstCard) {
-            std::cout << "?? ";
+        if (hideFirstCard && i == 0) {
+            if (debug) {
+                std::cout << "[";
+                displayCard(playerHand.cards[i], showIcon);
+                std::cout << "] ";
+            }
+            else {
+                showIcon? std::cout << "?? " : std::cout << "?? of ?????? ";
+            }
         }
         else {
-            displayCard(playerHand.cards[i], true);
+            displayCard(playerHand.cards[i], showIcon);
             std::cout << " ";
         }
     }
+    calculateTotalScore(playerHand, debug);
     std::cout << "(" << playerHand.score << ")" << std::endl;
 }
