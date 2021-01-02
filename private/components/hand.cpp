@@ -58,10 +58,11 @@ void increaseHandSize(hand &playerHand) {
 
     playerHand.handSize++;
 
-    if (playerHand.handSize > playerHand.arraySize) {
+    if (playerHand.handSize >= playerHand.arraySize) {
         /* Copy the contents of the old array to the new array */
-        playingCard *newCardArray = new playingCard[playerHand.arraySize * 2];
-        for (int i = 0; i < playerHand.handSize - 1; i++) {
+        playerHand.arraySize *= 2;
+        auto *newCardArray = new playingCard[playerHand.arraySize];
+        for (int i = 0; i < playerHand.handSize; i++) {
             newCardArray[i] = playerHand.cards[i];
         }
         /* Free memory and reassign the pointer */

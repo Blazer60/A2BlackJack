@@ -132,6 +132,12 @@ void blackjack() {
     generateDeck(cards);
     int credits = 100;
 
+    hand br;
+    addCard(br, drawCard(cards));
+    addCard(br, drawCard(cards));
+    addCard(br, drawCard(cards));
+    addCard(br, drawCard(cards));
+
     bool option = true;
     while (option) {
         /* Play a round */
