@@ -10,7 +10,7 @@ int main() {
 
     /* Main menu for the user. Branches off into separate methods */
     while (!quitGame) {
-        char playerChoice = characterInput("(p)lay, (s)ettings, (t)utorial, (q)uit: ", "pstq", true);
+        char playerChoice = characterInput("(p)lay, (s)ettings, (t)utorial, (q)uit:", "pstq", true);
         switch (playerChoice) {
             case 'p':
             case '1':

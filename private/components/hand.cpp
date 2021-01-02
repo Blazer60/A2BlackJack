@@ -86,5 +86,5 @@ void displayHand(hand &playerHand, char playerName[], bool hideFirstCard) {
             std::cout << " ";
         }
     }
-    std::cout << std::endl;
+    std::cout << "(" << playerHand.score << ")" << std::endl;
 }

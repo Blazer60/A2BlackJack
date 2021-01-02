@@ -14,7 +14,7 @@ void blackjack() {
     addCard(player, drawCard(cards));
     addCard(player, drawCard(cards));
 
-    displayHand(player);
+    displayHand(player, "Player");
 
     std::cout << "this would go to an actual game but it isn't implemented yet" << std::endl;
 }
