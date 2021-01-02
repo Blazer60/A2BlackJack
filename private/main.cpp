@@ -20,7 +20,7 @@ void menuInfo() {
 int main() {
     /* Default Settings */
     bool debug = true;
-    bool showIcons = true;
+    bool showIcons = false;
     bool quitGame = false;
 
     /* Main menu for the user. Branches off into separate methods */
@@ -30,7 +30,7 @@ int main() {
         switch (playerChoice) {
             case 'p':
             case '1':
-                blackjack();
+                blackjack(debug, showIcons);
                 break;
             case 's':
             case '2':

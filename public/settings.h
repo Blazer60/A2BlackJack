@@ -10,6 +10,6 @@
 
 void displaySettingsInfo(bool &debug, bool showIcons);
 void setSetting(bool &setting);
-void settingsMenu(bool &debug, bool showIcons);
+void settingsMenu(bool &debug, bool &showIcons);
 
 #endif //A2BLACKJACK_SETTINGS_H

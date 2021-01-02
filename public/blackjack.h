@@ -17,8 +17,10 @@ bool playAgain();
 int enterCredits(int &credits);
 bool dealCard();
 void displayBetInfo(int &credits, int &bet);
-void displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet, bool hideHoleCard = true, bool debug = false);
-void playRound(deck &cards, int &credits);
-void blackjack();
+void
+displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet, bool hideHoleCard = true,
+            bool showIcons = true, bool debug = false);
+void playRound(deck &cards, int &credits, bool debug, bool showIcons);
+void blackjack(bool debug, bool showIcons);
 
 #endif //A2BLACKJACK_BLACKJACK_H

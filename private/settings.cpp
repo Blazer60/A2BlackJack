@@ -49,7 +49,7 @@ void setSetting(bool &setting) {
     }
 }
 
-void settingsMenu(bool &debug, bool showIcons) {
+void settingsMenu(bool &debug, bool &showIcons) {
     for (;;) {
         displaySettingsInfo(debug, showIcons);
         char input = characterInput("Select an option to change:", "dsqe", true);

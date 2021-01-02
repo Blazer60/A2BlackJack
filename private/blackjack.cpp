@@ -46,7 +46,8 @@ void displayBetInfo(int &credits, int &bet) {
     std::cout << "Current Bet: " << bet << "c" << std::setw(offSet) << "Pot: " << credits << "c" << std::endl;
 }
 
-void displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet, bool hideHoleCard, bool debug) {
+void displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet, bool hideHoleCard, bool showIcons,
+                 bool debug) {
     /* Banner */
     system("cls");
     std::cout << "-_-_-_-_-_-_-_- Dr. Greens Casino -_-_-_-_-_-_-" << std::endl;
@@ -60,20 +61,20 @@ void displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet
     displayDeckInfo(cards, player.handSize + dealer.handSize);
     std::cout << std::endl;
     /* Display both hands */
-    displayHand(dealer, "Dealer", true, hideHoleCard, debug);
-    displayHand(player, "Player", true, false, debug);
+    displayHand(dealer, "Dealer", showIcons, hideHoleCard, debug);
+    displayHand(player, "Player", showIcons, false, debug);
     /* Last turn info */
 
     std::cout << std::endl;
 }
 
-void playRound(deck &cards, int &credits) {
+void playRound(deck &cards, int &credits, bool debug, bool showIcons) {
     /* Pre round setup */
 
     hand playerHand;
     hand dealerHand;
     int bet = 0;
-    displayInfo(playerHand, dealerHand, cards, credits, bet, true, false);
+    displayInfo(playerHand, dealerHand, cards, credits, bet, true, showIcons, debug);
     bet = enterCredits(credits);
     credits -= bet;
 
@@ -86,7 +87,7 @@ void playRound(deck &cards, int &credits) {
     /* Players Turn */
     while (!endTurn) {
         /* display info */
-        displayInfo(playerHand, dealerHand, cards, credits, bet, true, false);
+        displayInfo(playerHand, dealerHand, cards, credits, bet, true, showIcons, debug);
         /* Ask if they want to hit or stand */
         endTurn = !dealCard();
 
@@ -96,7 +97,7 @@ void playRound(deck &cards, int &credits) {
             calculateTotalScore(playerHand);
             if (playerHand.score > 21) {
                 endTurn = true;
-                displayInfo(playerHand, dealerHand, cards, credits, bet, true, false);
+                displayInfo(playerHand, dealerHand, cards, credits, bet, true, showIcons, debug);
                 std::cout << "Your hand has gone bust" << std::endl;
                 system("pause");
             }
@@ -104,7 +105,7 @@ void playRound(deck &cards, int &credits) {
         }
     }
 
-    displayInfo(playerHand, dealerHand, cards, credits, bet, false, false);
+    displayInfo(playerHand, dealerHand, cards, credits, bet, false, showIcons, debug);
     std::cout << "The Dealer will now play" << std::endl;
     system("pause");
 
@@ -116,7 +117,7 @@ void playRound(deck &cards, int &credits) {
     }
 
     /* Determine winner */
-    displayInfo(playerHand, dealerHand, cards, credits, bet, false, false);
+    displayInfo(playerHand, dealerHand, cards, credits, bet, false, showIcons, debug);
 
     /* Check to see if deck has looped */
     if (cards.shuffle) {
@@ -162,7 +163,7 @@ void playRound(deck &cards, int &credits) {
     }
 }
 
-void blackjack() {
+void blackjack(bool debug, bool showIcons) {
     /* Initial Setup */
     deck cards;
     generateDeck(cards);
@@ -171,7 +172,7 @@ void blackjack() {
     bool option = true;
     while (option) {
         /* Play a round */
-        playRound(cards, credits);
+        playRound(cards, credits, debug, showIcons);
 
         /* Ask for another round */
         option = playAgain();
