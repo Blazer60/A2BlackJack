@@ -4,6 +4,7 @@
 // Date: 23/11/2020
 //
 
+#include <iomanip>
 #include "../../public/components/deck.h"
 
 
@@ -32,6 +33,29 @@ void shuffleDeck(deck &cards, unsigned int seed) {
     /* Reset deck stats */
     cards.shuffle = false;
     cards.cardPtr = 0;
+}
+
+void displayDeckInfo(deck &cards, int cardsOnField) {
+    int deckSize, discardSize;
+
+    if (cards.shuffle) {
+        discardSize = 52 - cardsOnField;
+        deckSize = 0;
+    }
+    else {
+        discardSize = cards.cardPtr - cardsOnField;
+        deckSize = 52 - cards.cardPtr;
+    }
+
+    /* Display info */
+    std::cout << std::setw(13) << "Deck: " << deckSize;
+    if (deckSize < 10) {
+        std::cout << std::setw(32);
+    }
+    else {
+        std::cout << std::setw(31);
+    }
+    std::cout << "Discard Pile: " << discardSize << std::endl;
 }
 
 playingCard drawCard(deck &cards) {

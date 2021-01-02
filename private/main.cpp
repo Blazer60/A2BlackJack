@@ -2,6 +2,20 @@
 #include "../public/blackjack.h"
 #include "../public/input.h"
 
+void menuInfo() {
+    system("CLS");
+    std::cout << "-_-_-_-_-_-_-_- Dr. Greens Casino -_-_-_-_-_-_-" << std::endl;
+    std::cout << "Welcome to Dr. Greens Casino.\n"
+                 "Select an option below:\n"
+                 "\n"
+                 "(P)lay Blackjack\n"
+                 "(S)ettings\n"
+                 "(H)ow to play?\n"
+                 "(Q)uit\n"
+                 << std::endl;
+
+}
+
 int main() {
     /* Default Settings */
     bool debug = true;
@@ -10,7 +24,8 @@ int main() {
 
     /* Main menu for the user. Branches off into separate methods */
     while (!quitGame) {
-        char playerChoice = characterInput("(p)lay, (s)ettings, (t)utorial, (q)uit:", "pstq", true);
+        menuInfo();
+        char playerChoice = characterInput("Option:", "pshq", true);
         switch (playerChoice) {
             case 'p':
             case '1':

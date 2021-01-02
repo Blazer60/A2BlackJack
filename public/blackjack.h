@@ -11,10 +11,12 @@
 #include "components/hand.h"
 #include "input.h"
 #include <iostream>
+#include <iomanip>
 
 bool playAgain();
 int enterCredits(int &credits);
 bool dealCard();
+void displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet, bool hideHoleCard = true, bool debug = false);
 void playRound(deck &cards, int &credits);
 void blackjack();
 

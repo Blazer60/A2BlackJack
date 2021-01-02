@@ -40,6 +40,27 @@ bool dealCard() {
     }
 }
 
+void displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet, bool hideHoleCard, bool debug) {
+    /* Banner */
+    system("cls");
+    std::cout << "-_-_-_-_-_-_-_- Dr. Greens Casino -_-_-_-_-_-_-" << std::endl;
+    if (debug) {
+        std::cout << "____|____|____|____|____|____|____|____|____|__" << std::endl;
+    }
+    /* Display Bet and Pot */
+    std::cout << "Current Bet: " << bet << "c" << ", Pot: " << credits << "c" << std::endl;
+
+    /* Display Deck and Discard pile */
+    // std::cout << std::setw(13) << "Deck: " << std::setw(34) << "Discard Pile: " << std::endl;
+    displayDeckInfo(cards, player.handSize + dealer.handSize);
+    /* Display both hands */
+    displayHand(dealer, "Dealer", true, hideHoleCard, debug);
+    displayHand(player, "Player", true, false, debug);
+    /* Last turn info */
+
+    std::cout << std::endl;
+}
+
 void playRound(deck &cards, int &credits) {
     /* Pre round setup */
     int bet = enterCredits(credits);
@@ -56,10 +77,7 @@ void playRound(deck &cards, int &credits) {
     /* Players Turn */
     while (!endTurn) {
         /* display info */
-        displayHand(dealerHand, "Dealer", true, true, true);
-        displayHand(playerHand, "Player", true, false, false);
-        /* display previous State */
-        std::cout << "This section will display the state of the game." << std::endl;
+        displayInfo(playerHand, dealerHand, cards, credits, bet, true, true);
         /* Ask if they want to hit or stand */
         endTurn = !dealCard();
 
@@ -78,8 +96,7 @@ void playRound(deck &cards, int &credits) {
     }
 
     /* Determine winner */
-    displayHand(dealerHand, "Dealer", true, false, true);
-    displayHand(playerHand, "Player", true, false, false);
+    displayInfo(playerHand, dealerHand, cards, credits, bet, true, true);
 
     /* Check to see if deck has looped */
     if (cards.shuffle) {

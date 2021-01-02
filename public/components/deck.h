@@ -38,6 +38,7 @@ struct deck {
 
 void generateDeck(deck &cards);
 void shuffleDeck(deck &cards, unsigned seed);
+void displayDeckInfo(deck &cards, int cardsOnField);
 playingCard drawCard(deck &cards);
 
 #endif //A2BLACKJACK_DECK_H
