@@ -42,7 +42,7 @@ bool dealCard() {
 
 void displayBetInfo(int &credits, int &bet) {
     int offSet = bet > 0 ? 31 - (int)log10((double)bet): 31;
-    offSet -= (int)log10((double)credits) + 1;
+    offSet -= credits > 0 ? (int)log10((double)credits) + 1: 1;
     std::cout << "Current Bet: " << bet << "c" << std::setw(offSet) << "Pot: " << credits << "c" << std::endl;
 }
 
