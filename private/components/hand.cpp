@@ -95,5 +95,10 @@ void displayHand(hand &playerHand, char playerName[], bool showIcon, bool hideFi
         }
     }
     calculateTotalScore(playerHand, debug || !hideFirstCard);
-    std::cout << "(" << playerHand.score << ")" << std::endl;
+    if (playerHand.score > 21) {
+        std::cout << "(BUST)" << std::endl;
+    }
+    else {
+        std::cout << "(" << playerHand.score << ")" << std::endl;
+    }
 }
