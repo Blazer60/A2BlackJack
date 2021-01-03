@@ -68,6 +68,9 @@ bool contains(char *input, char *options) {
     /* Error message to the user */
     std::cout << std::endl << "Please enter ";
     for (int i = 0; options[i] != '\0'; i++) {
+        if (options[i + 1] == '\0') {
+            std::cout << "or ";
+        }
         std::cout << options[i];
         if (options[i + 1] != '\0') {
             std::cout << ", ";
