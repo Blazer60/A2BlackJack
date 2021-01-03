@@ -106,7 +106,7 @@ void toLower(char *input) {
      */
     for (int i = 0; input[i] != '\0'; i++) {
         if (input[i] > 'A' && input[i] < 'Z') {
-            input[i] = input[i] - 'Z' - 'z';
+            input[i] = input[i] + 'z' - 'Z';
         }
     }
 }
