@@ -76,7 +76,7 @@ void playerTurn(hand &player, hand &dealer, deck &cards, int credits, int bet) {
         displayInfo(player, dealer, cards, credits, bet, true);
 
         if (player.score == 21) {
-            std::cout << "Your hand has a  score of 21. Standing by default." << std::endl;
+            std::cout << "Your hand has a score of 21. Standing by default." << std::endl;
             system("pause");
             return;
         }
@@ -133,7 +133,7 @@ void calculateWinner(hand &player, hand &dealer, deck &cards, int &credits, int 
     }
 
     /* Blackjack */
-    if (player.type == Blackjack || dealer.type == Blackjack) {
+    if (player.type == Blackjack || dealer.type == Blackjack && !(player.type == Blackjack && dealer.type == Blackjack)) {
         if (player.type == Blackjack) {
             std::cout << "You win. You have Blackjack" << std::endl;
             credits += bet * 2;
@@ -157,7 +157,7 @@ void calculateWinner(hand &player, hand &dealer, deck &cards, int &credits, int 
     else {
         std::cout << "Draw. Both players have the same score" << std::endl;
         credits += bet;
-        std::cout << bet * 2 << "c awarded" << std::endl;
+        std::cout << bet << "c awarded" << std::endl;
     }
 }
 
@@ -184,15 +184,14 @@ void playRound(deck &cards, int &credits) {
     system("pause");
     dealerTurn(dealerHand, cards);
 
-
+    calculateWinner(playerHand, dealerHand, cards, credits, bet);
+    system("pause");
 
     /* Check to see if deck has looped */
     if (cards.shuffle) {
+        std::cout << "The Deck will now be reshuffled" << std::endl;
         shuffleDeck(cards, std::chrono::steady_clock::now().time_since_epoch().count());
     }
-
-    calculateWinner(playerHand, dealerHand, cards, credits, bet);
-    system("pause");
 }
 
 void blackjack() {
