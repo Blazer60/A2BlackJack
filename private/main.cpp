@@ -34,7 +34,7 @@ int main() {
             case '2':
                 settingsMenu();
                 break;
-            case 't':
+            case 'h':
             case '3':
                 std::cout << "Tutorial" << std::endl;
                 break;
@@ -43,7 +43,7 @@ int main() {
                 quitGame = true;
                 break;
             default:
-                std::cout << "Please type p, s, t or q to continue" << std::endl;
+                std::cout << "Please type p, s, h or q to continue" << std::endl;
                 break;
         }
     }
