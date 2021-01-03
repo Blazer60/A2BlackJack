@@ -19,8 +19,6 @@ void menuInfo() {
 
 int main() {
     /* Default Settings */
-    bool debug = true;
-    bool showIcons = false;
     bool quitGame = false;
 
     /* Main menu for the user. Branches off into separate methods */
@@ -34,7 +32,7 @@ int main() {
                 break;
             case 's':
             case '2':
-                settingsMenu(debug, showIcons);
+                settingsMenu();
                 break;
             case 't':
             case '3':

@@ -7,11 +7,11 @@
 #ifndef A2BLACKJACK_SETTINGS_H
 #define A2BLACKJACK_SETTINGS_H
 
-bool g_debug = false;
-bool g_showIcons = true;
+extern bool g_debug;
+extern bool g_showIcons;
 
-void displaySettingsInfo(bool &debug, bool showIcons);
+void displaySettingsInfo();
 void setSetting(bool &setting);
-void settingsMenu(bool &debug, bool &showIcons);
+void settingsMenu();
 
 #endif //A2BLACKJACK_SETTINGS_H

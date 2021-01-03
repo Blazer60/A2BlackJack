@@ -10,7 +10,7 @@
 #include "../public/settings.h"
 
 bool playAgain() {
-    char input = characterInput("Would you like to play another round of Blackjack? (y/n):", "yn", true);
+    char input = characterInput((char*)"Would you like to play another round of Blackjack? (y/n):", (char*)"yn", true);
     switch (input) {
         case 'y':
         case '1':

@@ -8,13 +8,15 @@
 #include "../public/input.h"
 #include <iostream>
 
+bool g_debug = false;
+bool g_showIcons = true;
 
-void displaySettingsInfo(bool &debug, bool showIcons) {
+void displaySettingsInfo() {
     std::cout << "-_-_-_-_-_-_-_- Dr. Greens Casino -_-_-_-_-_-_-" << std::endl;
     std::cout << "-_-_-_-_-_-_-_-_-_-_ Settings -_-_-_-_-_-_-_-_-" << std::endl << std::endl;
 
     std::cout << "(D)ebug Mode: ";
-    if (debug) {
+    if (g_debug) {
         std::cout << "On";
     }
     else {
@@ -23,7 +25,7 @@ void displaySettingsInfo(bool &debug, bool showIcons) {
     std::cout << std::endl;
 
     std::cout << "(S)how Icons: ";
-    if (showIcons) {
+    if (g_showIcons) {
         std::cout << "On";
     }
     else {
@@ -49,18 +51,18 @@ void setSetting(bool &setting) {
     }
 }
 
-void settingsMenu(bool &debug, bool &showIcons) {
+void settingsMenu() {
     for (;;) {
-        displaySettingsInfo(debug, showIcons);
+        displaySettingsInfo();
         char input = characterInput("Select an option to change:", "dsqe", true);
         switch (input) {
             case '1':
             case 'd':
-                setSetting(debug);
+                setSetting(g_debug);
                 break;
             case '2':
             case 's':
-                setSetting(showIcons);
+                setSetting(g_showIcons);
                 break;
             default:
                 return;
