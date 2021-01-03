@@ -7,6 +7,8 @@
 #ifndef A2BLACKJACK_SETTINGS_H
 #define A2BLACKJACK_SETTINGS_H
 
+bool g_debug = false;
+bool g_showIcons = true;
 
 void displaySettingsInfo(bool &debug, bool showIcons);
 void setSetting(bool &setting);

@@ -5,10 +5,11 @@
 //
 
 #include "../../public/components/playingCard.h"
+#include "../../public/settings.h"
 
 
-void displayCard(playingCard &card, bool displayIcon) {
-    if (displayIcon) {
+void displayCard(playingCard &card) {
+    if (g_showIcons) {
         std::cout << card.name ;
 
         /* Sets the mode to Unicode */

@@ -30,7 +30,7 @@ int main() {
         switch (playerChoice) {
             case 'p':
             case '1':
-                blackjack(debug, showIcons);
+                blackjack();
                 break;
             case 's':
             case '2':

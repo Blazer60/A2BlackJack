@@ -9,7 +9,6 @@
 
 #include "components/deck.h"
 #include "components/hand.h"
-#include "input.h"
 #include <iostream>
 #include <iomanip>
 
@@ -18,9 +17,8 @@ int enterCredits(int &credits);
 bool dealCard();
 void displayBetInfo(int &credits, int &bet);
 void
-displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet, bool hideHoleCard = true,
-            bool showIcons = true, bool debug = false);
-void playRound(deck &cards, int &credits, bool debug, bool showIcons);
-void blackjack(bool debug, bool showIcons);
+displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet, bool hideHoleCard = true);
+void playRound(deck &cards, int &credits);
+void blackjack();
 
 #endif //A2BLACKJACK_BLACKJACK_H

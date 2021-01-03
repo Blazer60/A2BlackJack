@@ -22,6 +22,6 @@ struct hand {
 void calculateTotalScore(hand &playerHand, bool countFirstCard = true);
 void increaseHandSize(hand &playerHand);
 void addCard(hand &playerHand, playingCard newCard);
-void displayHand(hand &playerHand, char playerName[], bool showIcon = false, bool hideFirstCard = false, bool debug = false);
+void displayHand(hand &playerHand, char playerName[], bool hideFirstCard = false);
 
 #endif //A2BLACKJACK_HAND_H

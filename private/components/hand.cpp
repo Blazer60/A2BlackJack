@@ -5,6 +5,7 @@
 //
 
 #include "../../public/components/hand.h"
+#include "../../public/settings.h"
 
 void calculateTotalScore(hand &playerHand, bool countFirstCard) {
     /*
@@ -76,25 +77,25 @@ void addCard(hand &playerHand, playingCard newCard) {
     increaseHandSize(playerHand);
 }
 
-void displayHand(hand &playerHand, char playerName[], bool showIcon, bool hideFirstCard, bool debug) {
+void displayHand(hand &playerHand, char playerName[], bool hideFirstCard) {
     std::cout << playerName << ": ";
     for (int i = 0; i < playerHand.handSize; i++) {
         if (hideFirstCard && i == 0) {
-            if (debug) {
+            if (g_debug) {
                 std::cout << "[";
-                displayCard(playerHand.cards[i], showIcon);
+                displayCard(playerHand.cards[i]);
                 std::cout << "] ";
             }
             else {
-                showIcon? std::cout << "?? " : std::cout << "?? of ?????? ";
+                g_showIcons? std::cout << "?? " : std::cout << "?? of ?????? ";
             }
         }
         else {
-            displayCard(playerHand.cards[i], showIcon);
+            displayCard(playerHand.cards[i]);
             std::cout << " ";
         }
     }
-    calculateTotalScore(playerHand, debug || !hideFirstCard);
+    calculateTotalScore(playerHand, g_debug || !hideFirstCard);
     if (playerHand.score > 21) {
         std::cout << "(BUST)" << std::endl;
     }

@@ -20,6 +20,6 @@ struct playingCard {
     std::wstring icon;
 };
 
-void displayCard(playingCard &card, bool displayIcon=false);
+void displayCard(playingCard &card);
 
 #endif //A2BLACKJACK_PLAYINGCARD_H
