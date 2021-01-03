@@ -37,10 +37,10 @@ void displaySettingsInfo() {
 void setSetting(bool &setting) {
     char input;
     if (setting) {
-        input = characterInput("Would you like to turn off this setting? (y/n):", "yn", true);
+        input = characterInput((char*)"Would you like to turn off this setting? (y/n):", (char*)"yn", true);
     }
     else {
-        input = characterInput("Would you like to turn on this setting? (y/n):", "yn", true);
+        input = characterInput((char*)"Would you like to turn on this setting? (y/n):", (char*)"yn", true);
     }
     switch (input) {
         case '1':
@@ -54,7 +54,7 @@ void setSetting(bool &setting) {
 void settingsMenu() {
     for (;;) {
         displaySettingsInfo();
-        char input = characterInput("Select an option to change:", "dsqe", true);
+        char input = characterInput((char*)"Select an option to change:", (char*)"dsqe", true);
         switch (input) {
             case '1':
             case 'd':

@@ -25,11 +25,11 @@ bool playAgain() {
 }
 
 int enterCredits(int &credits) {
-    return integerInput("How many Credits would you like to bet?:", 0, credits);
+    return integerInput((char*)"How many Credits would you like to bet?:", 0, credits);
 }
 
 bool dealCard() {
-    char input = characterInput("Would you like to (h)it or (s)tand?:", "hs", true);
+    char input = characterInput((char*)"Would you like to (h)it or (s)tand?:", (char*)"hs", true);
     switch (input) {
         case 'h':
         case '1':
@@ -63,8 +63,8 @@ void displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet
     displayDeckInfo(cards, player.handSize + dealer.handSize);
     std::cout << std::endl;
     /* Display both hands */
-    displayHand(dealer, "Dealer", hideHoleCard);
-    displayHand(player, "Player", false);
+    displayHand(dealer, (char*)"Dealer", hideHoleCard);
+    displayHand(player, (char*)"Player", false);
     /* Last turn info */
 
     std::cout << std::endl;
