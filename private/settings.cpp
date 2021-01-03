@@ -12,6 +12,7 @@ bool g_debug = false;
 bool g_showIcons = true;
 
 void displaySettingsInfo() {
+    system("cls");
     std::cout << "-_-_-_-_-_-_-_- Dr. Greens Casino -_-_-_-_-_-_-" << std::endl;
     std::cout << "-_-_-_-_-_-_-_-_-_-_ Settings -_-_-_-_-_-_-_-_-" << std::endl << std::endl;
 
