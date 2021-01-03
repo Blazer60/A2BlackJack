@@ -48,14 +48,9 @@ void displayDeckInfo(deck &cards, int cardsOnField) {
     }
 
     /* Display info */
-    std::cout << std::setw(13) << "Deck: " << deckSize;
-    if (deckSize < 10) {
-        std::cout << std::setw(32);
-    }
-    else {
-        std::cout << std::setw(31);
-    }
-    std::cout << "Discard Pile: " << discardSize << std::endl;
+    int offSet = deckSize > 0 ? 40 - (int)log10((double)deckSize) : 40;
+    offSet -= discardSize > 0 ? (int)log10((double)discardSize) + 1 : 1;
+    std::cout << "Deck: " << deckSize << std::setw(offSet) << "Discard Pile: " << discardSize << std::endl;
 }
 
 playingCard drawCard(deck &cards) {
