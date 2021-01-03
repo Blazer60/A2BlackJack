@@ -15,8 +15,13 @@
 bool playAgain();
 int enterCredits(int &credits);
 bool dealCard();
+
 void displayBetInfo(int &credits, int &bet);
 void displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet, bool hideHoleCard = true);
+
+void playerTurn(hand &player, hand &dealer, deck &cards, int credits, int bet);
+void dealerTurn(hand &dealer, deck &cards);
+void calculateWinner(hand &player, hand &dealer, deck &cards, int &credits, int &bet);
 void playRound(deck &cards, int &credits);
 void blackjack();
 
