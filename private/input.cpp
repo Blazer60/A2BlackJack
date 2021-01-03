@@ -150,7 +150,9 @@ char characterInput(char *message, char *options, bool allowNumbers) {
         /* Hidden Number check */
         if (allowNumbers) {
             if(isInteger(input, false)) {
-                return input[0];
+                if (inRange(charToInt(input), 1, std::strlen(options))) {
+                    return input[0];
+                }
             }
         }
 
