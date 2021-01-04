@@ -192,6 +192,10 @@ void playRound(deck &cards, int &credits) {
         std::cout << "The Deck will now be reshuffled" << std::endl;
         shuffleDeck(cards, std::chrono::steady_clock::now().time_since_epoch().count());
     }
+
+    /* Deallocate heap memory in case the OS doesn't */
+    delete [] playerHand.cards;
+    delete [] dealerHand.cards;
 }
 
 void blackjack() {
