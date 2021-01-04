@@ -106,7 +106,7 @@ void playerTurn(hand &player, hand &dealer, deck &cards, int credits, int bet) {
 
 void dealerTurn(hand &dealer, deck &cards) {
     calculateTotalScore(dealer);
-    while (dealer.score < 17) {
+    while (dealer.score < 18) {
         addCard(dealer, drawCard(cards));
         calculateTotalScore(dealer);
     }
