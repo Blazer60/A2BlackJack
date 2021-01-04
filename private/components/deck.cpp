@@ -56,6 +56,8 @@ void displayDeckInfo(deck &cards, int cardsOnField) {
 playingCard drawCard(deck &cards) {
     playingCard newCard = cards.deck[cards.cardPtr];
     cards.cardPtr = (cards.cardPtr + 1) % 52;
-    cards.shuffle = cards.cardPtr > cards.shufflePtr && !cards.shuffle;
+    if (!cards.shuffle) {
+        cards.shuffle = cards.cardPtr > cards.shufflePtr;
+    }
     return newCard;
 }
