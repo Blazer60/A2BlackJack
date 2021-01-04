@@ -30,7 +30,7 @@
 struct deck {
     playingCard deck[52];
     int cardPtr = 0;
-    int shufflePtr = 44;
+    int shufflePtr = 42;
     bool shuffle = false;
 };
 

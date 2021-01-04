@@ -22,7 +22,7 @@ void displayTutorial() {
 
     std::cout << "This game consists of a single deck of cards that is shuffled before\n"
                  "The game starts. Additionally, it is shuffled at the end or a round \n"
-                 "when the number cards dealt overall exceeds 44 cards. You will \n"
+                 "when the number cards dealt overall exceeds 42 cards. You will \n"
                  "be told when the deck is shuffled.\n" << std::endl;
 
     system("pause");
