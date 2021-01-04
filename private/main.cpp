@@ -2,6 +2,7 @@
 #include "../public/blackjack.h"
 #include "../public/input.h"
 #include "../public/settings.h"
+#include "../public/tutorial.h"
 
 void menuInfo() {
     system("CLS");
@@ -36,7 +37,7 @@ int main() {
                 break;
             case 'h':
             case '3':
-                std::cout << "Tutorial" << std::endl;
+                displayTutorial();
                 break;
             case 'q':
             case '4':
