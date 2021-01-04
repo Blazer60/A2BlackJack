@@ -6,6 +6,7 @@
 
 #include "../public/settings.h"
 #include "../public/input.h"
+#include "../public/unitTests.h"
 #include <iostream>
 
 bool g_debug = false;
@@ -32,6 +33,11 @@ void displaySettingsInfo() {
     else {
         std::cout << "Off";
     }
+    /* Unit Tests */
+    if (g_debug) {
+        std::cout << std::endl;
+        std::cout << "(R)un Unit Test";
+    }
     std::cout << std::endl << "(E)xit settings" << std::endl << std::endl;
 }
 
@@ -55,18 +61,38 @@ void setSetting(bool &setting) {
 void settingsMenu() {
     for (;;) {
         displaySettingsInfo();
-        char input = characterInput((char*)"Select an option to change:", (char*)"dsqe", true);
-        switch (input) {
-            case '1':
-            case 'd':
-                setSetting(g_debug);
-                break;
-            case '2':
-            case 's':
-                setSetting(g_showIcons);
-                break;
-            default:
-                return;
+        if (!g_debug) {
+            char input = characterInput((char*)"Select an option to change:", (char*)"dsqe", true);
+            switch (input) {
+                case '1':
+                case 'd':
+                    setSetting(g_debug);
+                    break;
+                case '2':
+                case 's':
+                    setSetting(g_showIcons);
+                default:
+                    return;
+            }
+        }
+        else {
+            char input = characterInput((char*)"Select an option to change:", (char*)"dsqre", true);
+            switch (input) {
+                case '1':
+                case 'd':
+                    setSetting(g_debug);
+                    break;
+                case '2':
+                case 's':
+                    setSetting(g_showIcons);
+                    break;
+                case '3':
+                case 'r':
+                    runUnitTest();
+                    break;
+                default:
+                    return;
+            }
         }
     }
 }
