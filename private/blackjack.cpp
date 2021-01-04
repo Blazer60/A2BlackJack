@@ -136,8 +136,8 @@ void calculateWinner(hand &player, hand &dealer, deck &cards, int &credits, int 
     if (player.type == Blackjack || dealer.type == Blackjack && !(player.type == Blackjack && dealer.type == Blackjack)) {
         if (player.type == Blackjack) {
             std::cout << "You win. You have Blackjack" << std::endl;
-            credits += bet * 2;
-            std::cout << bet * 2 << "c awarded" << std::endl;
+            credits += bet * 2 + bet / 2;
+            std::cout << bet * 2 + bet / 2 << "c awarded" << std::endl;
         }
         else {
             std::cout << "You loose. Dealers has Blackjack" << std::endl;
