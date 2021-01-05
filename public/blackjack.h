@@ -12,17 +12,20 @@
 #include <iostream>
 #include <iomanip>
 
-bool playAgain();
-int enterCredits(int &credits);
+/* Input */
 bool dealCard();
+int enterCredits(int &credits);
+bool playAgain();
 
-void displayBetInfo(int &credits, int &bet);
-void displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet, bool hideHoleCard = true);
-
+/* Logic (In order of execution) */
+void blackjack();
+void playRound(deck &cards, int &credits);
 void playerTurn(hand &player, hand &dealer, deck &cards, int credits, int bet);
 void dealerTurn(hand &dealer, deck &cards);
 void calculateWinner(hand &player, hand &dealer, deck &cards, int &credits, int &bet);
-void playRound(deck &cards, int &credits);
-void blackjack();
+
+/* Render */
+void displayBetInfo(int &credits, int &bet);
+void displayInfo(hand &player, hand &dealer, deck &cards, int &credits, int &bet, bool hideHoleCard = true);
 
 #endif //A2BLACKJACK_BLACKJACK_H
