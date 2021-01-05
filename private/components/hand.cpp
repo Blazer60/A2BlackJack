@@ -7,13 +7,17 @@
 #include "../../public/components/hand.h"
 #include "../../public/settings.h"
 
-void calculateTotalScore(hand &playerHand, bool countFirstCard) {
-    /*
-     * Calculate the total score of a hand.
-     * Additionally set's the type of hand to
-     * keep track of Blackjack
-     */
+void addCard(hand &playerHand, playingCard newCard) {
+    playerHand.cards[playerHand.handSize] = newCard;
+    increaseHandSize(playerHand);
+}
 
+/*
+ * Calculate the total score of a hand.
+ * Additionally set's the type of hand to
+ * keep track of Blackjack
+ */
+void calculateTotalScore(hand &playerHand, bool countFirstCard) {
     playerHand.score = 0;
     int aceCount = 0;
     bool aceFound = false;
@@ -51,12 +55,11 @@ void calculateTotalScore(hand &playerHand, bool countFirstCard) {
     }
 }
 
+/*
+ * Increases the amount of cards in the players hand by 1.
+ * It will also increase the array size on the heap if needed.
+ */
 void increaseHandSize(hand &playerHand) {
-    /*
-     * Increases the amount of cards in the players hand by 1.
-     * It will also increase the array size on the heap if needed.
-     */
-
     playerHand.handSize++;
 
     if (playerHand.handSize >= playerHand.arraySize) {
@@ -72,29 +75,30 @@ void increaseHandSize(hand &playerHand) {
     }
 }
 
-void addCard(hand &playerHand, playingCard newCard) {
-    playerHand.cards[playerHand.handSize] = newCard;
-    increaseHandSize(playerHand);
-}
-
 void displayHand(hand &playerHand, char playerName[], bool hideFirstCard) {
     std::cout << playerName << ": ";
+
     for (int i = 0; i < playerHand.handSize; i++) {
         if (hideFirstCard && i == 0) {
+            /* Debug Cards shown in []*/
             if (g_debug) {
                 std::cout << "[";
                 displayCard(playerHand.cards[i]);
                 std::cout << "] ";
             }
+            /* Show ? if the card is hidden */
             else {
                 g_showIcons? std::cout << "?? " : std::cout << "?? of ?????? ";
             }
         }
+        /* Display the card */
         else {
             displayCard(playerHand.cards[i]);
             std::cout << " ";
         }
     }
+
+    /* Show the score of the hand next to the cards */
     calculateTotalScore(playerHand, g_debug || !hideFirstCard);
     if (playerHand.score > 21) {
         std::cout << "(BUST)" << std::endl;

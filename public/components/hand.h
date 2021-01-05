@@ -9,7 +9,7 @@
 
 #include "playingCard.h"
 
-enum handType { Blackjack, Soft, Hard, Bust };
+enum handType { Blackjack, Soft, Hard, Bust };  // Used to determine if a hand has Blackjack or Bust
 
 struct hand {
     playingCard *cards = new playingCard[3];
@@ -19,9 +19,12 @@ struct hand {
     handType type = Hard;
 };
 
+/* Logic */
+void addCard(hand &playerHand, playingCard newCard);
 void calculateTotalScore(hand &playerHand, bool countFirstCard = true);
 void increaseHandSize(hand &playerHand);
-void addCard(hand &playerHand, playingCard newCard);
+
+/* Render */
 void displayHand(hand &playerHand, char playerName[], bool hideFirstCard = false);
 
 #endif //A2BLACKJACK_HAND_H
