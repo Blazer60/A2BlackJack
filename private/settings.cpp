@@ -12,35 +12,6 @@
 bool g_debug = false;
 bool g_showIcons = true;
 
-void displaySettingsInfo() {
-    system("cls");
-    std::cout << "-_-_-_-_-_-_-_- Dr. Greens Casino -_-_-_-_-_-_-" << std::endl;
-    std::cout << "-_-_-_-_-_-_-_-_-_-_ Settings -_-_-_-_-_-_-_-_-" << std::endl << std::endl;
-
-    std::cout << "(D)ebug Mode: ";
-    if (g_debug) {
-        std::cout << "On";
-    }
-    else {
-        std::cout << "Off";
-    }
-    std::cout << std::endl;
-
-    std::cout << "(S)how Icons: ";
-    if (g_showIcons) {
-        std::cout << "On";
-    }
-    else {
-        std::cout << "Off";
-    }
-    /* Unit Tests */
-    if (g_debug) {
-        std::cout << std::endl;
-        std::cout << "(R)un Unit Test";
-    }
-    std::cout << std::endl << "(E)xit settings" << std::endl << std::endl;
-}
-
 void setSetting(bool &setting) {
     char input;
     if (setting) {
@@ -95,4 +66,33 @@ void settingsMenu() {
             }
         }
     }
+}
+
+void displaySettingsInfo() {
+    system("cls");
+    std::cout << "-_-_-_-_-_-_-_- Dr. Greens Casino -_-_-_-_-_-_-" << std::endl;
+    std::cout << "-_-_-_-_-_-_-_-_-_-_ Settings -_-_-_-_-_-_-_-_-" << std::endl << std::endl;
+
+    std::cout << "(D)ebug Mode: ";
+    if (g_debug) {
+        std::cout << "On";
+    }
+    else {
+        std::cout << "Off";
+    }
+    std::cout << std::endl;
+
+    std::cout << "(S)how Icons: ";
+    if (g_showIcons) {
+        std::cout << "On";
+    }
+    else {
+        std::cout << "Off";
+    }
+    /* Unit Tests */
+    if (g_debug) {
+        std::cout << std::endl;
+        std::cout << "(R)un Unit Test";
+    }
+    std::cout << std::endl << "(E)xit settings" << std::endl << std::endl;
 }
