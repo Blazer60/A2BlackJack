@@ -1,8 +1,16 @@
+//
+// Main menu for Blackjack
+// Project: A2BlackJack
+// Created by: Ryan Purse
+// Date: 23/11/2020
+//
+
 #include <iostream>
 #include "../public/blackjack.h"
 #include "../public/input.h"
 #include "../public/settings.h"
 #include "../public/tutorial.h"
+
 
 void menuInfo() {
     system("CLS");
@@ -15,17 +23,18 @@ void menuInfo() {
                  "(H)ow to play?\n"
                  "(Q)uit\n"
                  << std::endl;
-
 }
 
-int main() {
-    /* Default Settings */
-    bool quitGame = false;
 
+/*
+ * Main menu for: Blackjack, settings and tutorial.
+ * Quits the program upon user request.
+ */
+int main() {
     /* Main menu for the user. Branches off into separate methods */
-    while (!quitGame) {
+    for (;;) {
         menuInfo();
-        char playerChoice = characterInput("Option:", "pshq", true);
+        char playerChoice = characterInput((char*)"Option:", (char*)"pshq", true);
         switch (playerChoice) {
             case 'p':
             case '1':
@@ -41,12 +50,10 @@ int main() {
                 break;
             case 'q':
             case '4':
-                quitGame = true;
-                break;
+                return 0;
             default:
                 std::cout << "Please type p, s, h or q to continue" << std::endl;
                 break;
         }
     }
-    return 0;
 }
