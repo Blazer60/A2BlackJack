@@ -7,11 +7,27 @@
 #include <iomanip>
 #include "../../public/components/deck.h"
 
+/*
+ * Returns a copy of a card in the deck
+ * Determines if the deck needs to be
+ * shuffled or not.
+ */
+playingCard drawCard(deck &cards) {
+    playingCard newCard = cards.deck[cards.cardPtr];
+    cards.cardPtr = (cards.cardPtr + 1) % 52;
+    if (!cards.shuffle) {
+        cards.shuffle = cards.cardPtr > cards.shufflePtr;
+    }
+    return newCard;
+}
 
-
+/*
+ * Assigns each card in a deck the correct values
+ * Shuffles the deck after generation.
+ */
 void generateDeck(deck &cards) {
     char suits[4][9] = {"Diamonds", "Hearts", "Spades", "Clubs"};
-    char names[13][6] = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+    char names[13][3] = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
     std::wstring suitIcon[4] = {DIAMONDS, HEARTS, SPADES, CLUBS};
 
     for (int i = 0; i < 52; i++) {
@@ -19,6 +35,7 @@ void generateDeck(deck &cards) {
         int namePtr = i % 13;
         strcpy_s(cards.deck[i].suit, 9, suits[suitPtr]);
         strcpy_s(cards.deck[i].name, 6, names[namePtr]);
+        /* Sets the Ace value, face value or 10 if it's a picture card */
         cards.deck[i].value = namePtr == 0? 11 :  std::min(namePtr + 1, 10);
         cards.deck[i].icon = suitIcon[suitPtr];
     }
@@ -51,13 +68,4 @@ void displayDeckInfo(deck &cards, int cardsOnField) {
     int offSet = deckSize > 0 ? 40 - (int)log10((double)deckSize) : 40;
     offSet -= discardSize > 0 ? (int)log10((double)discardSize) + 1 : 1;
     std::cout << "Deck: " << deckSize << std::setw(offSet) << "Discard Pile: " << discardSize << std::endl;
-}
-
-playingCard drawCard(deck &cards) {
-    playingCard newCard = cards.deck[cards.cardPtr];
-    cards.cardPtr = (cards.cardPtr + 1) % 52;
-    if (!cards.shuffle) {
-        cards.shuffle = cards.cardPtr > cards.shufflePtr;
-    }
-    return newCard;
 }
