@@ -7,13 +7,19 @@
 #ifndef A2BLACKJACK_INPUT_H
 #define A2BLACKJACK_INPUT_H
 
-bool isNull(char input[]);
-bool isInteger(char input[], bool displayError);
-bool inRange(int num, int min, int max);
-bool contains(char *input, char *options);
-int charToInt(char input[]);
-void toLower(char input[]);
-int integerInput(char message[], int min, int max);
-char characterInput(char message[], char options[], bool allowNumbers = false);
+
+/* Input Checks */
+bool contains(char *input, char *options);                  // enum Check
+bool isInteger(char *input, bool displayError);             // Type Check
+bool isNull(char *input);                                   // Null Check
+bool inRange(int num, int min, int max, bool displayError); // Range Check
+
+/* Conversions */
+int charToInt(char *input);
+void toLower(char *input);
+
+/* Input Validation */
+char characterInput(char *message, char *options, bool allowNumbers = false);
+int integerInput(char *message, int min, int max);
 
 #endif //A2BLACKJACK_INPUT_H
