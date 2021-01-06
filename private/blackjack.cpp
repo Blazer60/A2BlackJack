@@ -176,7 +176,7 @@ void calculateWinner(hand &player, hand &dealer, deck &cards, int &credits, int 
             std::cout << bet * 2 + bet / 2 << "c awarded" << std::endl;
         }
         else {
-            std::cout << "You loose. Dealers has Blackjack" << std::endl;
+            std::cout << "You lose. Dealer has Blackjack" << std::endl;
         }
         return;
     }
@@ -188,7 +188,7 @@ void calculateWinner(hand &player, hand &dealer, deck &cards, int &credits, int 
         std::cout << bet * 2 << "c awarded" << std::endl;
     }
     else if (dealer.score > player.score) {
-        std::cout << "You loose. The dealer has a higher score than you." << std::endl;
+        std::cout << "You lose. The dealer has a higher score than you." << std::endl;
         std::cout << "Zero Credits awarded" << std::endl;
     }
     else {
