@@ -25,7 +25,7 @@ bool dealCard() {
 }
 
 int enterCredits(int &credits) {
-    return integerInput((char*)"How many Credits would you like to bet?:", 0, credits);
+    return integerInput((char*)"How many Credits would you like to bet?:", 1, credits);
 }
 
 bool playAgain() {
