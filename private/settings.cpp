@@ -47,7 +47,7 @@ void settingsMenu() {
             }
         }
         else {
-            char input = characterInput((char*)"Select an option to change:", (char*)"dsqre", true);
+            char input = characterInput((char*)"Select an option to change:", (char*)"dsqrie", true);
             switch (input) {
                 case '1':
                 case 'd':
@@ -60,6 +60,10 @@ void settingsMenu() {
                 case '3':
                 case 'r':
                     runUnitTest();
+                    break;
+                case '4':
+                case 'i':
+                    runInputTest();
                     break;
                 default:
                     return;
@@ -92,7 +96,7 @@ void displaySettingsInfo() {
     /* Unit Tests */
     if (g_debug) {
         std::cout << std::endl;
-        std::cout << "(R)un Unit Test";
+        std::cout << "(R)un Unit Test" << std::endl << "Run (I)nput Test";
     }
     std::cout << std::endl << "(E)xit settings" << std::endl << std::endl;
 }

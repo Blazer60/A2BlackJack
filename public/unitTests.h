@@ -20,6 +20,7 @@ struct unitData {
     int gamesPlayed{ 0 };
 };
 
+void runInputTest();
 void runPseudoGame(deck &cards, unitData &data);
 void runUnitTest();
 

@@ -8,11 +8,66 @@
 #include "../public/blackjack.h"
 #include "../public/components/deck.h"
 #include "../public/components/hand.h"
+#include "../public/input.h"
 
+void runInputTest() {
+    /* Character input. no integers allowed */
+    for (;;) {
+        char input = characterInput(
+                (char*)"--Unit Test: Character Input--\nEnter p, s, h or q:",
+                (char*)"pshq");
+        switch (input) {
+            case 'p':
+            case 's':
+            case 'h':
+                std::cout << "Valid Input" << std::endl;
+                continue;
+            case 'q':
+            default:
+                break;
+        }
+        break;
+    }
+    system("cls");
+
+    /* Character input. integers allowed */
+    for (;;) {
+        char input = characterInput(
+                (char*)"--Unit Test: Character Input w/ integers--\nEnter a, b or c:",
+                (char*)"abc",
+                true);
+        switch (input) {
+            case 'a':
+            case 'b':
+            case '1':
+            case '2':
+                std::cout << "Valid Input" << std::endl;
+                continue;
+            case 'c':
+            case '3':
+            default:
+                break;
+        }
+        break;
+    }
+    system("cls");
+
+    /* integer input */
+    int input = -1;
+    while (input != 10) {
+        input = integerInput(
+                (char*)"--Unit Test: Integer Input--\nEnter a number between 0-300:",
+                0,
+                300);
+        std::cout << "Valid Input" << std::endl;
+    }
+    system("pause");
+}
+
+/*
+ * Runs a game between two dealers and records the result
+ */
 void runPseudoGame(deck &cards, unitData &data) {
-    /*
-     * Runs a game between two dealers and records the result
-     */
     hand playerOne;
     hand playerTwo;
 
