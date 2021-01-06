@@ -104,7 +104,7 @@ int charToInt(char *input) {
  */
 void toLower(char *input) {
     for (int i = 0; input[i] != '\0'; i++) {
-        if (input[i] > 'A' && input[i] < 'Z') {
+        if (input[i] >= 'A' && input[i] <= 'Z') {
             input[i] = input[i] + 'z' - 'Z';
         }
     }
