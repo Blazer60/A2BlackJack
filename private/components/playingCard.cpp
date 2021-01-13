@@ -11,12 +11,9 @@
 void displayCard(playingCard &card) {
     if (g_showIcons) {
         std::cout << card.name ;
-
-        /* Sets the mode to Unicode */
-        _setmode(_fileno(stdout), _O_U16TEXT);
+        _setmode(_fileno(stdout), _O_U16TEXT);  // Sets the mode to Unicode
         std::wcout << card.icon;
-        /* Resets back to ASCII */
-        _setmode(_fileno(stdout), _O_TEXT);
+        _setmode(_fileno(stdout), _O_TEXT);     // Resets back to ASCII
     }
     else {
         std::cout << card.name << " of " << card.suit;
