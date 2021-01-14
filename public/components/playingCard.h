@@ -17,7 +17,7 @@ struct playingCard {
     char suit[9];
     char name[6];
     int value;
-    std::wstring icon;
+    wchar_t icon;   // UTF-16 Playing Card Icons
 };
 
 void displayCard(playingCard &card);

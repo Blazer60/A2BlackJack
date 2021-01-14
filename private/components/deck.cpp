@@ -28,7 +28,7 @@ playingCard drawCard(deck &cards) {
 void generateDeck(deck &cards) {
     char suits[4][9] = {"Diamonds", "Hearts", "Spades", "Clubs"};
     char names[13][3] = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
-    std::wstring suitIcon[4] = {DIAMONDS, HEARTS, SPADES, CLUBS};
+    wchar_t suitIcon[4] = {DIAMONDS, HEARTS, SPADES, CLUBS};
 
     for (int i = 0; i < 52; i++) {
         int suitPtr = i % 4;

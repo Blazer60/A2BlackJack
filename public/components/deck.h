@@ -18,10 +18,10 @@
 #include "playingCard.h"
 
 /* Unicode character for each suit */
-#define SPADES L"\u2660"
-#define HEARTS L"\u2665"
-#define DIAMONDS L"\u2666"
-#define CLUBS L"\u2663"
+#define SPADES L'\u2660'
+#define HEARTS L'\u2665'
+#define DIAMONDS L'\u2666'
+#define CLUBS L'\u2663'
 
 struct deck {
     playingCard deck[52];
