@@ -79,6 +79,14 @@ bool inRange(int num, int min, int max, bool displayError) {
     return false;
 }
 
+bool inLength(char *input, int maxLength) {
+    if (std::strlen(input) <= maxLength) {
+        return true;
+    }
+    std::cout << std::endl << "please enter a single character:";
+    return false;
+}
+
 /*
  * Converts Ascii to an integer
  */
@@ -98,6 +106,7 @@ int charToInt(char *input) {
     return intInput;
 }
 
+
 /*
  * Converts all alphabetical
  * characters to lower case
@@ -109,7 +118,6 @@ void toLower(char *input) {
         }
     }
 }
-
 
 char characterInput(char *message, char *options, bool allowNumbers) {
     char input[60];
@@ -129,6 +137,10 @@ char characterInput(char *message, char *options, bool allowNumbers) {
                     return input[0];
                 }
             }
+        }
+
+        if (!inLength(input, 1)) {
+            continue;
         }
 
         toLower(input);

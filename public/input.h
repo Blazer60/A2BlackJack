@@ -13,6 +13,7 @@ bool contains(char *input, char *options);                  // enum Check
 bool isInteger(char *input, bool displayError);             // Type Check
 bool isNull(char *input);                                   // Null Check
 bool inRange(int num, int min, int max, bool displayError); // Range Check
+bool inLength(char *input, int maxLength);                  // Length Check
 
 /* Conversions */
 int charToInt(char *input);
