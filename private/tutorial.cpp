@@ -58,7 +58,7 @@ void displayTutorial() {
                  "Dealer Bust: 2x Credits\n"
                  "\n"
                  "Both have Blackjack?: 1x Credits\n"
-                 "You have Blackjack: 2x Credits + 0.5x Credits\n"
+                 "You have Blackjack: 5/2x Credits\n"
                  "Dealer has Blackjack: 0 Credits\n"
                  "\n"
                  "Both have equal score?: 1x Credits\n"
@@ -68,7 +68,7 @@ void displayTutorial() {
     system("pause");
     std::cout << std::endl;
 
-    std::cout << "If your pot reaches 0 credits at the end of the round, you’ll be forced\n"
+    std::cout << "If your pot reaches 0 credits at the end of the round, you will be forced\n"
                  "To restart the game. Additionally, you can quit at the end of any\n"
                  "Round. This will reset your credits in both instances.\n" << std::endl;
 
